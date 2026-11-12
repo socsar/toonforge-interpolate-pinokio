@@ -1,0 +1,72 @@
+{
+  "run": [
+    {
+      "method": "shell.run",
+      "params": {
+        "message": "git clone https://github.com/comfyanonymous/ComfyUI"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI/custom_nodes",
+        "message": "git clone https://github.com/ltdrdata/ComfyUI-Manager"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI/custom_nodes",
+        "message": "git clone https://github.com/kijai/ComfyUI-DynamiCrafterWrapper"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "venv": "env",
+        "message": [
+          "{{platform === 'darwin' ? 'pip install torch torchvision torchaudio' : 'pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121'}}",
+          "pip install -r requirements.txt"
+        ]
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "venv": "env",
+        "message": "pip install -r custom_nodes/ComfyUI-DynamiCrafterWrapper/requirements.txt"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "venv": "env",
+        "message": "pip install -r custom_nodes/ComfyUI-Manager/requirements.txt"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "venv": "env",
+        "message": "pip install huggingface_hub"
+      }
+    },
+    {
+      "method": "input",
+      "params": {
+        "title": "Install complete",
+        "description": "ComfyUI + ComfyUI-Manager + the DynamiCrafter/ToonCrafter node are installed. Click Launch, then read README.md for the one-time model download step (done from inside ComfyUI Manager, since exact model file names can change — see the node's own README for the current ones)."
+      }
+    },
+    {
+      "method": "browser.open",
+      "params": {
+        "uri": "/?selected=ToonForge Interpolate"
+      }
+    }
+  ]
+}

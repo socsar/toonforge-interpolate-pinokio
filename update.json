@@ -1,0 +1,43 @@
+{
+  "run": [
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "message": "git pull"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI/custom_nodes/ComfyUI-Manager",
+        "message": "git pull"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI/custom_nodes/ComfyUI-DynamiCrafterWrapper",
+        "message": "git pull"
+      }
+    },
+    {
+      "method": "shell.run",
+      "params": {
+        "path": "ComfyUI",
+        "venv": "env",
+        "message": [
+          "pip install -r requirements.txt",
+          "pip install -r custom_nodes/ComfyUI-DynamiCrafterWrapper/requirements.txt"
+        ]
+      }
+    },
+    {
+      "method": "input",
+      "params": {
+        "title": "Update complete",
+        "description": "ComfyUI, ComfyUI-Manager and the DynamiCrafter/ToonCrafter node are up to date."
+      }
+    }
+  ]
+}
